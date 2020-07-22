@@ -8,12 +8,12 @@ function navbar() {
       <ul className="navbar-nav mr-auto">
         <li className="navbar-item">
           <Link to="/" className="nav-link">
-            MenuList
+            Log In
           </Link>
         </li>
         <li className="navbar-item">
-          <Link to="/users/add" className="nav-link">
-            Create User
+          <Link to="/restaurants/add" className="nav-link">
+            Register
           </Link>
         </li>
       </ul>
