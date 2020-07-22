@@ -8,6 +8,8 @@ import CreateRestaurant from './components/CreateRestaurant';
 import menu from './components/menu';
 
 function App() {
+  // check if user is logged in, ternary operator
+  
   return (
     <Router>
       <div className="container">

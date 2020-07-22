@@ -6,6 +6,7 @@ function CreateRestaurant() {
     const [owner, setOwner] = useState('');
     const [email, setEmail] = useState('');
     const [license, setLicense] = useState('');
+    const [password, setPassword] = useState('');
 
     const submitCreateRestaurant = e => {
         e.preventDefault();
@@ -13,11 +14,12 @@ function CreateRestaurant() {
             restaurant: restaurant,
             owner: owner,
             email: email,
-            license: license
+            license: license,
+            password: password
         }
         console.log(newRestaurant);
 
-        axios.post("http://localhost:4000/restaurants/add", newRestaurant)
+        axios.post("http://localhost:4000/restaurants/register", newRestaurant)
         .then(res => console.log(res.data))
         .catch(err => console.log(err));
 
@@ -57,6 +59,13 @@ function CreateRestaurant() {
                     className="form-control"
                     value={license}
                     onChange={(e) => setLicense(e.target.value)} />
+                    <label htmlFor="password">Password: </label>
+                    <input
+                    name="password"
+                    required
+                    className="form-control"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)} />
                     <button type="submit" className="btn btn-primary my-2">Add your Restaurant</button>
                 </div>
             </form>
