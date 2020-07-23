@@ -20,7 +20,10 @@ function CreateRestaurant() {
         console.log(newRestaurant);
 
         axios.post("http://localhost:4000/restaurants/register", newRestaurant)
-        .then(res => console.log(res.data))
+        .then(res => {
+            const token = res;
+            localStorage.setItem('jwtToken', token);
+        })
         .catch(err => console.log(err));
 
         // window.location ="/";
