@@ -1,0 +1,19 @@
+.navbar-container {
+    background-color: rgb(30, 30, 30);
+}
+
+.navbar-list {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar-item {
+    list-style-type: none;
+    margin: 20px 50px;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: white;
+    font-size: 28px;
+}

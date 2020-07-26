@@ -1,27 +1,23 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Route, useHistory } from "react-router-dom";
+import { login } from "../../actions";
 
-function CreateRestaurant(props) {
-  const [restaurant, setRestaurant] = useState("");
-  const [owner, setOwner] = useState("");
+function Login(props) {
   const [email, setEmail] = useState("");
   const [license, setLicense] = useState("");
   const [password, setPassword] = useState("");
 
-  const submitCreateRestaurant = (e) => {
+  const loginRestaurant = (e) => {
     e.preventDefault();
-    const newRestaurant = {
-      restaurant: restaurant,
-      owner: owner,
+    const loginCredentials = {
       email: email,
-      license: license,
       password: password,
     };
-    console.log(newRestaurant);
+    console.log(loginCredentials);
 
     axios
-      .post("http://localhost:4000/restaurants/register", newRestaurant)
+      .post("http://localhost:4000/restaurants/login", loginCredentials)
       .then((res) => {
         const token = res;
         localStorage.setItem("jwtToken", token);
@@ -40,25 +36,9 @@ function CreateRestaurant(props) {
 
   return (
     <div>
-      <h3>Join Today!</h3>
-      <form onSubmit={submitCreateRestaurant}>
+      <h3>Log in!</h3>
+      <form onSubmit={loginRestaurant}>
         <div className="form-group">
-          <label htmlFor="restaurant">Restaurant Name: </label>
-          <input
-            name="restaurant"
-            required
-            className="form-control"
-            value={restaurant}
-            onChange={(e) => setRestaurant(e.target.value)}
-          />
-          <label htmlFor="owner">Account Holder: </label>
-          <input
-            name="owner"
-            required
-            className="form-control"
-            value={owner}
-            onChange={(e) => setOwner(e.target.value)}
-          />
           <label htmlFor="email">Email: </label>
           <input
             name="email"
@@ -66,14 +46,6 @@ function CreateRestaurant(props) {
             className="form-control"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-          />
-          <label htmlFor="license">Restaurant License: </label>
-          <input
-            name="license"
-            required
-            className="form-control"
-            value={license}
-            onChange={(e) => setLicense(e.target.value)}
           />
           <label htmlFor="password">Password: </label>
           <input
@@ -84,7 +56,7 @@ function CreateRestaurant(props) {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button type="submit" className="btn btn-primary my-2">
-            Add your Restaurant
+            Login
           </button>
         </div>
       </form>
@@ -92,4 +64,4 @@ function CreateRestaurant(props) {
   );
 }
 
-export default CreateRestaurant;
+export default Login;
