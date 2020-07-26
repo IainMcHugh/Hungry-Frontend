@@ -8,7 +8,7 @@ import NavBar from "./components/navbar";
 import CreateRestaurant from "./components/CreateRestaurant";
 import menu from "./components/menu";
 
-import { login } from "./actions";
+import { login, logout } from "./actions";
 import Home from "./components/Home";
 
 function App() {
@@ -31,10 +31,14 @@ function App() {
     dispatch(login());
   }
 
+  function logoutUser() {
+    dispatch(logout());
+  }
+
   return (
     <Router>
       <div className="container">
-        <NavBar login={isLoggedInReducer}/>
+        <NavBar isloggedin={isLoggedInReducer} logout={logoutUser} />
         <br />
         <Route path="/menus/:id" exact component={menu} />
         <Route
@@ -44,12 +48,6 @@ function App() {
         />
 
         <Route path="/home" exact component={Home} />
-        {/* {isLoggedInReducer ? 
-        <div>Logged in</div> 
-        :
-        
-        <div>Logged out</div>
-        } */}
       </div>
     </Router>
   );
