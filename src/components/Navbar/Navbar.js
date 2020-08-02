@@ -40,8 +40,8 @@ function Navbar(props) {
       ) : (
         <ul className="navbar-list">
           <li className="navbar-item">
-            <Link to="/home" className="navbar-link">
-              Home
+            <Link to="/" className="navbar-link">
+              Hungry
             </Link>
           </li>
           <li className="navbar-item">

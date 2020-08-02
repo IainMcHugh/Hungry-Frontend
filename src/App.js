@@ -10,6 +10,7 @@ import menu from "./components/menu";
 
 import { login, logout } from "./actions";
 import Home from "./components/Home/Home";
+import Hungry from "./components/Hungry/Hungry"
 
 function App() {
   const isLoggedInReducer = useSelector((state) => state.isLoggedInReducer);
@@ -27,6 +28,7 @@ function App() {
     <Router>
       <div className="container">
         <NavBar isloggedin={isLoggedInReducer} logout={logoutUser} />
+        <Route path="/" exact component={Hungry} />
         <Route path="/menus/:id" exact component={menu} />
         <Route
           path="/restaurants/add"
