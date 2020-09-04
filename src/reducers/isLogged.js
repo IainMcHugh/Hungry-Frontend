@@ -5,7 +5,7 @@ const isLoggedInReducer = (state = false, action) => {
     case "LOGOUT":
       return false;
     default:
-        return false;
+      return false;
   }
 };
 

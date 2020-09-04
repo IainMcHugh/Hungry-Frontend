@@ -4,7 +4,7 @@ import { Route, useHistory } from "react-router-dom";
 
 import "./Register.css";
 
-function Register(props) {
+const Register = (props) => {
   const [restaurant, setRestaurant] = useState("");
   const [owner, setOwner] = useState("");
   const [email, setEmail] = useState("");
@@ -25,7 +25,7 @@ function Register(props) {
     axios
       .post("http://localhost:4000/restaurants/register", newRestaurant)
       .then((res) => {
-        const token = res;
+        const token = res.data.token;
         localStorage.setItem("jwtToken", token);
         props.login();
         console.log(props);

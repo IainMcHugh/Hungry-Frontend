@@ -5,7 +5,7 @@ import { login } from "../../actions";
 
 import "./Login.css";
 
-function Login(props) {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [license, setLicense] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +21,7 @@ function Login(props) {
     axios
       .post("http://localhost:4000/restaurants/login", loginCredentials)
       .then((res) => {
-        const token = res;
+        const token = res.headers.authorisation;
         localStorage.setItem("jwtToken", token);
         props.login();
         console.log(props);

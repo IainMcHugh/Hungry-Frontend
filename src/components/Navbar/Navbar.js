@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Axios from "axios";
 import "./Navbar.css";
 
-function Navbar(props) {
+const Navbar = (props) => {
   console.log(props);
   const history = useHistory();
 
