@@ -21,8 +21,17 @@ function App() {
   }
 
   function logoutUser() {
+    localStorage.removeItem("jwtToken");
     dispatch(logout());
   }
+
+  useEffect(()=> {
+    if(localStorage.getItem("jwtToken")){
+      dispatch(login());
+    } else {
+      dispatch(logout());
+    }
+  },[])
 
   return (
     <Router>

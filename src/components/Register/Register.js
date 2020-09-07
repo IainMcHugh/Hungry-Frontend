@@ -25,7 +25,10 @@ const Register = (props) => {
     axios
       .post("http://localhost:4000/restaurants/register", newRestaurant)
       .then((res) => {
-        const token = res.data.token;
+        console.log("Token res");
+        // console.log(res.data);
+        // const token = res.data.token;
+        const token = res.headers.authorisation;
         localStorage.setItem("jwtToken", token);
         props.login();
         console.log(props);
