@@ -8,6 +8,7 @@
 }
 
 .navbar-list {
+    height: 100%;
     display: flex;
     justify-content: flex-end;
 }

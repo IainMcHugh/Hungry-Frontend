@@ -23,7 +23,7 @@ const Navbar = (props) => {
 
   return (
     <nav className="navbar-container">
-      <div className=""></div>
+      {/* <div className=""></div> */}
       {props.isloggedin ? (
         <ul className="navbar-list">
           <li className="navbar-item">

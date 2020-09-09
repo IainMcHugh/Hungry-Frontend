@@ -3,10 +3,12 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import NavBar from "./components/Navbar/Navbar";
-import Register from "./components/Register/Register";
+// import NavBar from "./components/Navbar/Navbar";
+import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
-import menu from "./components/menu";
+import Register from "./components/Register/Register";
+import Dash from "./components/Dash/Dash";
+import Menu from "./components/Menu/Menu";
 
 import { login, logout } from "./actions";
 import Home from "./components/Home/Home";
@@ -36,9 +38,13 @@ function App() {
   return (
     <Router>
       <div className="container">
-        <NavBar isloggedin={isLoggedInReducer} logout={logoutUser} />
+        <Header isloggedin={isLoggedInReducer} logout={logoutUser} />
+        <Route path="/dash" exact component={Dash} />
+        <Route path="/menu" exact component={Menu} />
+
+        {/* Logged out routes */}
         <Route path="/" exact component={Hungry} />
-        <Route path="/menus/:id" exact component={menu} />
+        {/* <Route path="/home" exact component={Home} /> */}
         <Route
           path="/restaurants/add"
           exact
@@ -49,7 +55,6 @@ function App() {
           exact
           component={(props) => <Login {...props} login={loginUser} />}
         />
-        <Route path="/home" exact component={Home} />
       </div>
     </Router>
   );

@@ -40,7 +40,7 @@ const Register = (props) => {
   const history = useHistory();
 
   function navigateToHome() {
-    history.push("/home");
+    history.push("/dash");
   }
 
   return (
