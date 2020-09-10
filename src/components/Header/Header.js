@@ -97,11 +97,11 @@ const Header = (props) => {
   const drawerItems = [
     "dash",
     "menu",
-    "food",
+    "orders",
     "access",
     "payments",
     "bookings",
-    "layout",
+    "floor-plan",
     "stats",
   ];
 

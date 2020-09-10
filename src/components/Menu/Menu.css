@@ -5,23 +5,19 @@
 
 .menu-wrapper {
     background-color: rgba(245, 245, 245);
-    /* height: 100vh; */
     padding-top: 100px;
     padding-left: 240px;
 }
 
 .menu-container {
     width: 80%;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     margin: 50px auto;
     padding: 50px 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: white;
-    border-radius: 50px;
-    border: 1px solid black;
 }
 
 .menu-container h2 {
@@ -41,8 +37,22 @@
     font-weight: 400;
 }
 
-.starters-container {
+.menuitems-container {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.starters-container {
+    height: 30vh;
+    width: 35%;
+    border: 1px solid rgb(218, 218, 218);
+    background-color: white;
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .starters-container h4 {
@@ -58,6 +68,74 @@
 #starter-desc {
     font-style: italic;
 }
+
+.starters-container_add {
+    height: 30vh;
+    width: 35%;
+    border: 1px solid rgb(218, 218, 218);
+    background-color: white;
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.starters-container_add button {
+    padding: 10px;
+    border: none;
+    color: grey;
+    border-radius: 2px;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.starters-container_add button:hover {
+    background-color: green;
+    color: white;
+}
+
+/* MenuAdd */
+
+.form-wrapper {
+    position: absolute;
+    top: 30vh;
+    left: 30%;
+    width: 40%;
+    height: 40vh;
+    background-color: rgba(199, 199, 199, 0.8);
+    border-radius: 20px;
+    border: 1px solid rgb(180, 180, 180);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* align-items: center; */
+}
+
+.form-wrapper > h2 {
+    width: 80%;
+    margin: 0 auto;
+    color: white;
+}
+
+.form-wrapper form {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-button-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-button-wrapper > button {
+    width: 50%;
+    margin: 20px;
+    padding: 5px;
+}
+
+/* Error styles */
 
 .auth-error {
     width: 100%;

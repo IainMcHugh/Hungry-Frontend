@@ -2,10 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import "./Menu.css";
+import MenuItem from "./MenuItem";
+import MenuAdd from "./MenuAdd";
 
 const Menu = () => {
   const [auth, setAuth] = useState(false);
   const [menu, setMenu] = useState();
+  const [overlay, setOverlay] = useState(false);
+
   useEffect(() => {
     let token = localStorage.getItem("jwtToken");
     if (!token) {
@@ -30,16 +34,16 @@ const Menu = () => {
             <div className="menu-container">
               <h2>{menu.restaurant}</h2>
               <h3>Starters:</h3>
+              <div className="menuitems-container">
               {Object.keys(menu.starters).map((starter) => {
                 return (
-                  <div className="starters-container">
-                    <h4>{starter}</h4>
-                    <h4 id="starter-desc">
-                      {menu.starters[starter].description}
-                    </h4>
-                  </div>
+                  <MenuItem name={starter} data={menu.starters[starter]} />
                 );
               })}
+              <div className="starters-container_add">
+                <button onClick={()=>setOverlay(true)}>Add new</button>
+              </div>
+              </div>
             </div>
           )}
         </div>
@@ -48,6 +52,7 @@ const Menu = () => {
             <h2>Oops! You need to log in first!</h2>
         </div>
       )}
+      {overlay ? <MenuAdd close={()=>setOverlay(false)}/>: null}
     </div>
   );
 };

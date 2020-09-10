@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import "./Home.css";
+// import "./Home.css";
 
 const Home = () => {
   const [menu, setMenu] = useState();
