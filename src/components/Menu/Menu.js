@@ -35,9 +35,9 @@ const Menu = () => {
               <h2>{menu.restaurant}</h2>
               <h3>Starters:</h3>
               <div className="menuitems-container">
-              {Object.keys(menu.starters).map((starter) => {
+              {menu.starters.map((starter) => {
                 return (
-                  <MenuItem name={starter} data={menu.starters[starter]} />
+                  <MenuItem data={starter} />
                 );
               })}
               <div className="starters-container_add">
@@ -52,7 +52,7 @@ const Menu = () => {
             <h2>Oops! You need to log in first!</h2>
         </div>
       )}
-      {overlay ? <MenuAdd close={()=>setOverlay(false)}/>: null}
+      {overlay ? <MenuAdd menuid={menu._id} close={()=>setOverlay(false)}/>: null}
     </div>
   );
 };
