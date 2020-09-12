@@ -10,6 +10,8 @@ const MenuAdd = (props) => {
   const [kcal, setKcal] = useState(0);
   // const [allergens, setAllergens] = useState("");
 
+  // TODO: When you call this, you need menuUpdateReducer to add new object to
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Form error checks

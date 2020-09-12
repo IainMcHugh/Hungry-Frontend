@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Route, useHistory } from "react-router-dom";
 import { login } from "../../actions";
+import { loginWithEmailAndPassword } from "../../API/auth";
 
 import "./Login.css";
 
@@ -12,22 +13,10 @@ const Login = (props) => {
 
   const loginRestaurant = (e) => {
     e.preventDefault();
-    const loginCredentials = {
-      email: email,
-      password: password,
-    };
-    console.log(loginCredentials);
-
-    axios
-      .post("http://localhost:4000/restaurants/login", loginCredentials)
-      .then((res) => {
-        const token = res.headers.authorisation;
-        localStorage.setItem("jwtToken", token);
-        props.login();
-        console.log(props);
-        navigateToHome();
-      })
-      .catch((err) => console.log(err));
+    loginWithEmailAndPassword(email, password).then((_res) => {
+      props.login();
+      navigateToHome();
+    });
   };
 
   const history = useHistory();
@@ -44,7 +33,7 @@ const Login = (props) => {
           <div className="login-form">
             <label htmlFor="email">Email: </label>
             <input
-            type="email"
+              type="email"
               name="email"
               required
               className="form-control"
@@ -53,7 +42,7 @@ const Login = (props) => {
             />
             <label htmlFor="password">Password: </label>
             <input
-            type="password"
+              type="password"
               name="password"
               required
               className="form-control"
@@ -68,6 +57,6 @@ const Login = (props) => {
       </section>
     </div>
   );
-}
+};
 
 export default Login;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Route, useHistory } from "react-router-dom";
+import { registerWithEmailAndPassword } from "../../API/auth";
 
 import "./Register.css";
 
@@ -20,21 +21,10 @@ const Register = (props) => {
       license: license,
       password: password,
     };
-    console.log(newRestaurant);
-
-    axios
-      .post("http://localhost:4000/restaurants/register", newRestaurant)
-      .then((res) => {
-        console.log("Token res");
-        // console.log(res.data);
-        // const token = res.data.token;
-        const token = res.headers.authorisation;
-        localStorage.setItem("jwtToken", token);
-        props.login();
-        console.log(props);
-        navigateToHome();
-      })
-      .catch((err) => console.log(err));
+    registerWithEmailAndPassword(newRestaurant).then((_res) => {
+      props.login();
+      navigateToHome();
+    });
   };
 
   const history = useHistory();
@@ -59,7 +49,7 @@ const Register = (props) => {
             />
             <label htmlFor="owner">Account Holder: </label>
             <input
-            type="text"
+              type="text"
               name="owner"
               required
               className="form-control"
@@ -68,7 +58,7 @@ const Register = (props) => {
             />
             <label htmlFor="email">Email: </label>
             <input
-            type="email"
+              type="email"
               name="email"
               required
               className="form-control"
@@ -77,7 +67,7 @@ const Register = (props) => {
             />
             <label htmlFor="license">Restaurant License: </label>
             <input
-            type="text"
+              type="text"
               name="license"
               required
               className="form-control"
@@ -101,6 +91,6 @@ const Register = (props) => {
       </section>
     </div>
   );
-}
+};
 
 export default Register;
