@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { addMenuItem } from "../../API/database";
+
+import { useDispatch } from "react-redux";
+import { menuUpdate } from "../../actions";
 
 import "./Menu.css";
 
@@ -10,9 +13,10 @@ const MenuAdd = (props) => {
   const [kcal, setKcal] = useState(0);
   // const [allergens, setAllergens] = useState("");
 
-  // TODO: When you call this, you need menuUpdateReducer to add new object to
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
+    // prevent reload
     e.preventDefault();
     // Form error checks
 
@@ -21,13 +25,12 @@ const MenuAdd = (props) => {
       menuid: props.menuid,
       item: { name, description, cost, allergens: [], kcal },
     };
-    console.log(item.name);
-    axios
-      .post("http://localhost:4000/menu/add", item)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
+    addMenuItem(item).then(result => {
+      console.log(result);
+      dispatch(menuUpdate(result.data));
+    });
+    // close form
+    props.close();
   };
 
   return (

@@ -25,9 +25,10 @@ export const menuRead = () => {
     };
 };
 
-export const menuUpdate = () => {
+export const menuUpdate = (item) => {
     return {
-        type: "MENU_UPDATE"
+        type: "MENU_UPDATE",
+        payload: item
     };
 };
 

@@ -8,7 +8,10 @@ const menuCrudReducer = (state = {}, action) => {
             // read
             break;
         case "MENU_UPDATE":
-            // update
+            // update - state is current menu object
+            state = {...state, 
+            starters: [...state.starters, action.payload]
+            }
             break;
         case "MENU_DELETE":
             // delete
