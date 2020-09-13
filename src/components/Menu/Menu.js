@@ -22,10 +22,13 @@ const Menu = () => {
       setAuth(false);
     } else {
       setAuth(true);
-      getUserMenu(token).then((res) => {
-        dispatch(menuCreate(res));
-        setMenu(res);
-      });
+      getUserMenu(token)
+        .then((res) => {
+          console.log(">getUserMenu: response returned");
+          dispatch(menuCreate(res));
+          setMenu(res);
+        })
+        .catch((err) => console.log(`>getUserMenu Error: ${err}`));
     }
   }, []);
 
@@ -33,19 +36,19 @@ const Menu = () => {
     <div className="menu-wrapper">
       {auth ? (
         <div>
-          { reduxMenu && (
+          {reduxMenu.starters && (
             <div className="menu-container">
-            <h2>{reduxMenu.restaurant}</h2>
-            <h3>Starters:</h3>
-            <div className="menuitems-container">
-              {reduxMenu.starters.map((starter) => {
-                return <Item data={starter} />;
-              })}
-              <div className="starters-container_add">
-                <button onClick={() => setOverlay(true)}>Add new</button>
+              <h2>{reduxMenu.restaurant}</h2>
+              <h3>Starters:</h3>
+              <div className="menuitems-container">
+                {reduxMenu.starters.map((starter) => {
+                  return <Item menuid={reduxMenu._id} data={starter} key={starter._id}/>;
+                })}
+                <div className="starters-container_add">
+                  <button onClick={() => setOverlay(true)}>Add new</button>
+                </div>
               </div>
             </div>
-          </div>
           )}
         </div>
       ) : (
@@ -54,7 +57,7 @@ const Menu = () => {
         </div>
       )}
       {overlay ? (
-        <MenuAdd menuid={menu._id} close={() => setOverlay(false)} />
+        <MenuAdd menuid={reduxMenu._id} close={() => setOverlay(false)} />
       ) : null}
     </div>
   );

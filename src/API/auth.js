@@ -4,11 +4,14 @@ const loginWithEmailAndPassword = (email, password) => {
   return axios
     .post("http://localhost:4000/restaurants/login", { email, password })
     .then((res) => {
+      console.log(`>loginWithEmailAndPassword response returned:`);
+      console.log(res);
       const token = res.headers.authorisation;
       localStorage.setItem("jwtToken", token);
     })
     .catch((err) => {
-      console.log(`>Error: ${err.message}`);
+      console.log(`>loginWithEmailAndPassword response error: ${err.message}`);
+      throw(err.message);
     });
 };
 

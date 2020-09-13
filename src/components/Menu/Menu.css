@@ -45,6 +45,7 @@
 }
 
 .starters-container {
+  position: relative;
   height: 30vh;
   width: 35%;
   border: 1px solid rgb(218, 218, 218);
@@ -67,6 +68,12 @@
 
 #starter-desc {
   font-style: italic;
+}
+
+.icon-button {
+  position: absolute;
+  top: 2%;
+  right: 1%;
 }
 
 .starters-container_add {

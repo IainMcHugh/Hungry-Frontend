@@ -49,33 +49,18 @@ const HeaderLogout = () => {
         <Typography className={classes.title} variant="h6">
           Hungry
         </Typography>
-        <Button color="inherit" variant="h6">
-          <Link className={classes.link} to="/restaurants/login">Sign In</Link>
+        <Button color="inherit" variant="contained">
+          <Link className={classes.link} to="/restaurants/login">
+            Sign In
+          </Link>
         </Button>
-        <Button color="inherit" variant="h6">
-          <Link className={classes.link} to="/restaurants/add">Register</Link>
+        <Button color="inherit" variant="contained">
+          <Link className={classes.link} to="/restaurants/add">
+            Register
+          </Link>
         </Button>
       </ToolBar>
     </AppBar>
-    // <nav className="header-container">
-    //   <ul className="header-list">
-    //     <li className="header-item">
-    //       <Link to="/" className="header-link">
-    //         Hungry
-    //       </Link>
-    //     </li>
-    //     <li className="header-item">
-    //       <Link to="/restaurants/login" className="header-link">
-    //         Sign In
-    //       </Link>
-    //     </li>
-    //     <li className="header-item">
-    //       <Link to="/restaurants/add" className="header-link">
-    //         Register
-    //       </Link>
-    //     </li>
-    //   </ul>
-    // </nav>
   );
 };
 

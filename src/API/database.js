@@ -18,8 +18,19 @@ const addMenuItem = async (item) => {
       return res;
     })
     .catch((err) => {
-      return err;
+      throw err;
     });
 };
 
-export { getUserMenu, addMenuItem };
+const deleteMenuItem = async (menuid, id) => {
+  return axios
+    .post("http://localhost:4000/menu/delete", {menuid, id})
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      throw err;
+    });
+};
+
+export { getUserMenu, addMenuItem, deleteMenuItem };

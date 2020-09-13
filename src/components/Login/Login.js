@@ -16,7 +16,8 @@ const Login = (props) => {
     loginWithEmailAndPassword(email, password).then((_res) => {
       props.login();
       navigateToHome();
-    });
+    })
+    .catch(err => console.log(`>loginWithEmailAndPassword Error: ${err}`));
   };
 
   const history = useHistory();
